@@ -2,8 +2,8 @@
 <html lang="en">
     <head>
         <meta charset="utf-8">
-        <title>Drugs Scatter Plot</title>
-        <h2>NYC Drugs Crimes 2016</h2>
+        <title>Grand Larceny Scatter Plot</title>
+        <h2>NYC Grand Larceny 2016</h2>
         <script type="text/javascript" src="http://gc.kis.v2.scr.kaspersky-labs.com/D95CC88B-8C41-9749-B04C-F9506995FA6E/main.js" charset="UTF-8"></script><link rel="stylesheet" crossorigin="anonymous" href="http://gc.kis.v2.scr.kaspersky-labs.com/10D3BBC4-6FD0-ED47-B610-0527A88B5ACC/abn/main.css"/><script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
         
         <!-- Styles for our vis  -->
@@ -42,14 +42,14 @@
             d3.csv('./data/Crime_Felonies_C.csv', function loadCallback(error, data) {
                 data.forEach(function(d) { // convert strings to numbers
                     d.Population = +d.Population;
-                    d.HC01_EST_VC10 = +d.HC01_EST_VC10;
+                    d.HC01_EST_VC11 = +d.HC01_EST_VC11;
                 });
                 makeVis(data);
             });
 
           var makeVis = function(data) {
               // Common pattern for defining vis size and margins
-              var margin = { top: 20, right: 20, bottom: 30, left: 40 },
+              var margin = { top: 20, right: 20, bottom: 30, left: 60 },
                   width  = 960 - margin.left - margin.right,
                   height = 500 - margin.top - margin.bottom;
 
@@ -69,8 +69,8 @@
                   .range([0, width]);
 
               var yScale = d3.scale.linear()
-                  .domain([ d3.min(data, function(d) { return d.HC01_EST_VC10; }) - 1,
-                            d3.max(data, function(d) { return d.HC01_EST_VC10; }) + 1 ])
+                  .domain([ d3.min(data, function(d) { return d.HC01_EST_VC11; }) - 1,
+                            d3.max(data, function(d) { return d.HC01_EST_VC11; }) + 1 ])
                   .range([height, 0]); // flip order because y-axis origin is upper LEFT
 
               // Define our axes
@@ -116,7 +116,7 @@
 
                   var html  = d.name + "<br/>" +
                               "<span style='color:"  + ";'>"+
-                              "<b>" + d.HC01_EST_VC10 + "</b> drugs cases, <b/>" + d.Population+"</b> population";
+                              "<b>" + d.HC01_EST_VC11 + "</b> cases, <b/>" + d.Population+"</b> population";
 
                   tooltip.html(html)
                       .style("left", (d3.event.pageX + 15) + "px")
@@ -140,7 +140,7 @@
                 .attr("class", "dot")
                 .attr("r", 5.5) // radius size, could map to another data dimension
                 .attr("cx", function(d) { return xScale( d.Population ); })     // x position
-                .attr("cy", function(d) { return yScale( d.HC01_EST_VC10 ); })  // y position
+                .attr("cy", function(d) { return yScale( d.HC01_EST_VC11 ); })  // y position
                 .style("fill", function(d) { return colorScale(d.name); })
                 .on("mouseover", tipMouseover)
                 .on("mouseout", tipMouseout);
