@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="utf-8">
+  <title>Murders Scatter Plot</title>
+        <h2>NYC Murders 2016</h2>
+<head>
+<body>
+<div id="viz"></div>
+<script src="//d3plus.org/js/d3.js"></script>
+<script src="//d3plus.org/js/d3plus.js"></script>
+<script>
+  function type(d) {
+    var row = {
+      Murders: +d.HC01_EST_VC12,
+      city: d.name,
+      'Population': +d.Population
+    };
+    return row;
+  }
+d3.csv("./data/Crime_Felonies_C.csv", type, function(error, data) {
+  if (error) {
+    throw error;
+  }
+  var visualization = d3plus.viz()
+    .container('#viz')  // container DIV to hold the visualization
+    .data(data)  // data to use with the visualization
+    .type('scatter') // visualization type
+    .id('city')  // key for which our data is unique on
+    .x('Population') // key for x-axis
+    .y('Murders') // key for y-axis
+    .size('Murders')
+    .draw()
+  });
+</script>
+</body>
+</html>
