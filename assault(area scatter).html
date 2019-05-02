@@ -1,10 +1,10 @@
-<!doctype html>
-<html lang="en" dir="ltr">
-<head>
+<!DOCTYPE html>
+<html lang="en">
+ <head>
 <meta charset="utf-8">
   <title>Assault Scatter Plot</title>
-        <h2>NYC Assaults 2016</h2>
-<head>
+    </head>
+      
 <body>
 <div id="viz"></div>
 <script src="//d3plus.org/js/d3.js"></script>
@@ -18,7 +18,7 @@
     };
     return row;
   }
-d3.csv("Crime_Felonies_C.csv", type, function(error, data) {
+d3.csv("/data/Crime_Felonies_C.csv", type, function(error, data) {
   if (error) {
     throw error;
   }
