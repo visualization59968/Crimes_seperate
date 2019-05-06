@@ -3,6 +3,7 @@
  <head>
 <meta charset="utf-8">
   <title>Assault Scatter Plot</title>
+  <h2>NYC Assaults 2016</h2>
     </head>
       
 <body>
@@ -14,7 +15,7 @@
     var row = {
       assault: +d.HC01_EST_VC04,
       city: d.name,
-      '2010 Population': +d.Population
+      'Population': +d.Population
     };
     return row;
   }
@@ -27,7 +28,7 @@ d3.csv("./data/Crime_Felonies_C.csv", type, function(error, data) {
     .data(data)  // data to use with the visualization
     .type('scatter') // visualization type
     .id('city')  // key for which our data is unique on
-    .x('2010 Population') // key for x-axis
+    .x('Population') // key for x-axis
     .y('assault') // key for y-axis
     .size('assault')
     .draw()
