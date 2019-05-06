@@ -12,7 +12,7 @@
 <script>
   function type(d) {
     var row = {
-      assault: +d.HC01_EST_VC04,
+      Assault: +d.HC01_EST_VC04,
       city: d.name,
       '2010 Population': +d.Population
     };
@@ -28,8 +28,8 @@ d3.csv("/data/Crime_Felonies_C.csv", type, function(error, data) {
     .type('scatter') // visualization type
     .id('city')  // key for which our data is unique on
     .x('2010 Population') // key for x-axis
-    .y('assault') // key for y-axis
-    .size('assault')
+    .y('Assault') // key for y-axis
+    .size('Assault')
     .draw()
   });
 </script>
